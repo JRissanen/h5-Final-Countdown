@@ -50,6 +50,18 @@ https://github.com/JRissanen/h1-OmaLabra
 * Asenna lisäksi jokin iso sanakirja täynnä salasanoja.
   * "Rockyou" -niminen sanakirja on yksi suosituimmista. (Yli 14 miljoonaa salasanaa/sanaa)
 
+* Tiivistetyyppi pitää olla tiedossa, jotta Hashcat voi murtaa `-m` parametrin numeron.
+  * Komennolla: `$ hashid -m 6b1628b016dff46e6fa35684be6acc96` pystyy analysoimaan kyseistä tiivistettä.
+  * Tuloste:
+  * ```
+    Analyzing '6b1628b016dff46e6fa35684be6acc96'
+    [+] MD2 
+    [+] MD5 [Hashcat Mode: 0]
+    [+] MD4 [Hashcat Mode: 900]
+    ...
+    ```
+  * Usein oikea tiivistetyppi on hashid:n antamien kolmen ensimmäisen vaihtoehdon joukossa.
+
 
 
 
@@ -85,6 +97,7 @@ https://github.com/JRissanen/h1-OmaLabra
 
 ## Lähteet
 https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h5-final-countdown </br>
+https://terokarvinen.com/2022/cracking-passwords-with-hashcat/
 
 
 
