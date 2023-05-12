@@ -67,7 +67,7 @@ https://github.com/JRissanen/h1-OmaLabra
 * `$ hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`.
   * `-m 0` tulee aiemman hashid:n tulostuksesta MD5 kohdasta: `[+] MD5 [Hashcat Mode: 0]`.
   * `-o solved` tallentaa hashcatin ratkaisun tyhjään tiedostoon nimeltä "solved". </br>
-(Karvinen, 2023).
+(Karvinen, 2022).
 
 ---
 
