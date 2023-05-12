@@ -100,7 +100,7 @@ https://github.com/JRissanen/h1-OmaLabra
 
 ### Karvinen 2023: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/)
 
-* Fuff on joohoi:n kehittämä "web fuzzer" -työkalu, joka mahdollistaa salaisten hakemistojen löytämisen.
+* Fuff on joohoi:n (Joona Hoikkala) kehittämä "web fuzzer" -työkalu, joka mahdollistaa salaisten hakemistojen löytämisen.
 
 * Fuff vaatii sanakirjan toimiakseen.
   * Esim Daniel Miesslerin sanakirjan voi ladata:
@@ -145,7 +145,7 @@ https://github.com/JRissanen/h1-OmaLabra
 
 ## a) Asenna Hashcat ja testaa sen toiminta murtamalla esimerkkisalasana.
 
-Seurasin tätä tehtävää tehdessäni [Tero Karvisen artikkelia](https://terokarvinen.com/2022/cracking-passwords-with-hashcat/).
+Seurasin tätä tehtävää tehdessäni Tero Karvisen artikkelia: [Cracking Passwords with Hashcat](https://terokarvinen.com/2022/cracking-passwords-with-hashcat/).
 
 Aloitin päivittämällä paketit ja lataamalla Hashcatin sekä Hashid:n. </br>
 ```
@@ -175,7 +175,7 @@ Annoin siis seuraavaksi komennon `$ hashid -m f838443d16a64e0ab95433cafa287bd9`.
 
 Tiedän jo valmiiksi että tiiviste on MD5, koska etsin tarkoituksella MD5 tiivisteen. </br>
 Seuraavaksi ajoin komennon: `$ hashcat -m 0 'f838443d16a64e0ab95433cafa287bd9' rockyou.txt -o ratkaisu`. </br>
-Tällä komennolla oletin saavani tiivisteen purettua ja sitä vastaavan sanan selville, sekä tallennettua sen pelkkänä tekstinä tiedostoon nimeltä "ratkaisu". </br>
+Tällä komennolla oletin saavani tiivisteen purettua ja sitä vastaavan sanan selville, sekä tallennettua sen pelkkänä tekstinä tiedostoon nimeltä "ratkaisu".
 Hashcat ei kuitenkaan pystynyt purkamaan kyseistä tiivistettä, joten ehkä se ei ole lataamassani rockyou.txt -tiedostossa?
 
 <img width="819" alt="Screenshot_3" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/85ebe6a0-e369-412d-934f-29c576858adf">
@@ -197,6 +197,10 @@ Nyt tuloste vastasi oletustani, joten voin todeta, että hashcat ja hashid toimi
 ---
 
 ## b) Salainen, mutta ei multa. Ratkaise dirfuzt-1 artikkelista Karvinen 2023: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/)
+
+Seurasin tässä tehtävässä Tero Karvisen artikkelia: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/).
+
+
 
 
 
