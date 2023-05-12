@@ -103,16 +103,16 @@ https://github.com/JRissanen/h1-OmaLabra
 * Fuff on joohoi:n kehittämä "web fuzzer" -työkalu, joka mahdollistaa salaisten hakemistojen löytämisen.
 
 * Fuff vaatii sanakirjan toimiakseen.
- * Esim Daniel Miesslerin sanakirjan voi ladata:
-  * `$ wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`.
+  * Esim Daniel Miesslerin sanakirjan voi ladata:
+   * `$ wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`.
 
 * Fuff on todella nopea.
 * Kaikki parametrit voi nähdä: `$ ./fuff`.
 
 * Fuff toimii esimerkiksi komennolla:
- * `$ ./ffuf -w common.txt -u http://<esimerkki.com>/FUZZ`.
-  * `-w` määrittää sanalistan/sanakirjan.
-  * `-u` määrittää url-osoitteen. </br>
+  * `$ ./ffuf -w common.txt -u http://<esimerkki.com>/FUZZ`.
+   * `-w` määrittää sanalistan/sanakirjan.
+   * `-u` määrittää url-osoitteen. </br>
 (Karvinen, 2023).
 
 ---
@@ -120,26 +120,26 @@ https://github.com/JRissanen/h1-OmaLabra
 ## y) The SUPER ultimate Hakk3r Che33tsheet 0.0.1. Tee tiivistelmä omista ja kavereiden parhaista tunketumistekniikoista. Ole täsmällinen, liitä komennot mukaan. Tämän kohdan vastaus lienee pidempi kuin aiempien x-tehtävien. Viittaa lähteisiin. Tässä alakohdassa ei tarvitse ajaa komentoja tietokoneella.
 
 * Turvallinen ympäristö
- * Tunketumista pitää aina harrastaa turvallisessa ympäristössä, siihen opin tekemään oman ympäristön [Tero Karvisen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h1-omalabra) tunkeutumistestaus kurssin ensimmäisellä oppitunnilla.
- * Oman ympäristöni näkee [täältä](https://github.com/JRissanen/h1-OmaLabra).
+  * Tunketumista pitää aina harrastaa turvallisessa ympäristössä, siihen opin tekemään oman ympäristön [Tero Karvisen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h1-omalabra) tunkeutumistestaus kurssin ensimmäisellä oppitunnilla.
+  * Oman ympäristöni näkee [täältä](https://github.com/JRissanen/h1-OmaLabra).
 
 * Metasploitable, [Tero Karvinen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/)
- * Täynnä hyviä exploitteja ja loistava lähtökohta tunkeutumistestaukseen.
- * Käynnistyy komennolla: `msfdb run`.
- * Uuden työtilan saa tehtyä komennolla: `workspace --add <haluamasi nimi>.`
- * Komennolla: `search` löytää exploitteja.
- * Komennolla: `use` voi ajaa exploitteja.
- * Komennolla `options` näkee exploitin vaatimukset.
+  * Täynnä hyviä exploitteja ja loistava lähtökohta tunkeutumistestaukseen.
+  * Käynnistyy komennolla: `msfdb run`.
+  * Uuden työtilan saa tehtyä komennolla: `workspace --add <haluamasi nimi>.`
+  * Komennolla: `search` löytää exploitteja.
+  * Komennolla: `use` voi ajaa exploitteja.
+  * Komennolla `options` näkee exploitin vaatimukset.
 
 * Nmap, [Tero Karvinen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/) sekä [StationX](https://www.stationx.net/nmap-cheat-sheet/)
- * Yleisin porttiskannaus työkalu.
- * Toimii komennolla: `sudo nmap <kohde ip-osoite>`.
- * Hyödyllisiä parametreja:
-  * `-A` "aggressiivinen" skannaus (käyttöjärjestelmä, versio, skripiti skannaus ja traceroute)
-  * `-sV` yrittää tunnistaa porttia käyttävän palvelun version
-  * `-sC` skannaa oletus scripteillä (oletus NSE=Nmap Scipting Engine documentation). 
-  * `-p` tietyn portin skannaus.
-  * `-o <tiedoston nimi>` tallentaa skannauksen tuloksen haluttuun tiedostoon, aktiiviseen hakemistoon.
+  * Yleisin porttiskannaus työkalu.
+  * Toimii komennolla: `sudo nmap <kohde ip-osoite>`.
+  * Hyödyllisiä parametreja:
+   * `-A` "aggressiivinen" skannaus (käyttöjärjestelmä, versio, skripiti skannaus ja traceroute)
+   * `-sV` yrittää tunnistaa porttia käyttävän palvelun version
+   * `-sC` skannaa oletus scripteillä (oletus NSE=Nmap Scipting Engine documentation). 
+   * `-p` tietyn portin skannaus.
+   * `-o <tiedoston nimi>` tallentaa skannauksen tuloksen haluttuun tiedostoon, aktiiviseen hakemistoon.
 
 ---
 
