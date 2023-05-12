@@ -135,8 +135,8 @@ https://github.com/JRissanen/h1-OmaLabra
   * Yleisin porttiskannaus työkalu.
   * Toimii komennolla: `sudo nmap <kohde ip-osoite>`.
   * Hyödyllisiä parametreja:
-   * `-A` "aggressiivinen" skannaus (käyttöjärjestelmä, versio, skripiti skannaus ja traceroute)
-   * `-sV` yrittää tunnistaa porttia käyttävän palvelun version
+   * `-A` "aggressiivinen" skannaus (käyttöjärjestelmä, versio, skripiti skannaus ja traceroute).
+   * `-sV` yrittää tunnistaa porttia käyttävän palvelun version.
    * `-sC` skannaa oletus scripteillä (oletus NSE=Nmap Scipting Engine documentation). 
    * `-p` tietyn portin skannaus.
    * `-o <tiedoston nimi>` tallentaa skannauksen tuloksen haluttuun tiedostoon, aktiiviseen hakemistoon.
@@ -145,24 +145,58 @@ https://github.com/JRissanen/h1-OmaLabra
 
 ## a) Asenna Hashcat ja testaa sen toiminta murtamalla esimerkkisalasana.
 
+Seurasin tätä tehtävää tehdessäni [Tero Karvisen artikkelia](https://terokarvinen.com/2022/cracking-passwords-with-hashcat/).
 
+Aloitin päivittämällä paketit ja lataamalla Hashcatin sekä Hashid:n. </br>
+```
+$ sudo apt-get update
+$ sudo apt-get -y install hashid hashcat
+```
 
+Sitten loin uuden hakemsiton tehtävää varten ja siirryin sinne. </br>
+```
+$ mkdir hash_hash
+$ cd hash_hash
+```
 
+Sitten latasin `wget` työkalun avulla "Rockyou" -nimisen sanakirjan. </br>
+`$ wget https://github.com/danielmiessler/SecLists/raw/master/Passwords/Leaked-Databases/rockyou.txt.tar.gz`. </br>
+Purin kompressoidun tiedoston komennolla: `$ tar xf rockyou.txt.tar.gz`. </br>
+Ja lopuksi poistin purkamisen jälkeen turhaksi jääneen tiedoston komennolla: `$ rm rockyou.txt.tar.gz`.
 
+Seuraavaksi menin [OnlineHashtoolsin](https://onlinehashtools.com/generate-random-md5-hash) sivulle, jossa pystyi generoimaan satunnaisia MD5 tiivisteitä. </br>
 
+<img width="821" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/e3bdaa4e-0846-4d3a-9a96-a7efb85ce40b">
 
+Kopioin sivulta ylimmän tiivisteen ja ajattelin testata Hashcatin ja Hashid:n toimivuutta sillä. </br>
+Annoin siis seuraavaksi komennon `$ hashid -m f838443d16a64e0ab95433cafa287bd9`.
 
+<img width="806" alt="Screenshot_2" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/984f5700-6de5-4c2b-835c-8faddd1b0dd4">
 
+Tiedän jo valmiiksi että tiiviste on MD5, koska etsin tarkoituksella MD5 tiivisteen. </br>
+Seuraavaksi ajoin komennon: `$ hashcat -m 0 'f838443d16a64e0ab95433cafa287bd9' rockyou.txt -o ratkaisu`. </br>
+Tällä komennolla oletin saavani tiivisteen purettua ja sitä vastaavan sanan selville, sekä tallennettua sen pelkkänä tekstinä tiedostoon nimeltä "ratkaisu". </br>
+Hashcat ei kuitenkaan pystynyt purkamaan kyseistä tiivistettä, joten ehkä se ei ole lataamassani rockyou.txt -tiedostossa?
 
+<img width="819" alt="Screenshot_3" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/85ebe6a0-e369-412d-934f-29c576858adf">
 
+Jos tiivisteen purku olisi onnistunut, "Status" kohdassa olisi lukenut "Cracked", eikä "Exhausted". </br>
+Lisäksi hakemistossa olisi tiedosto nimeltä "ratkaisu", jossa olisi tiivistettä vastaava sana.
 
+Kokeilin [MD5 Hash Generatorin](https://www.md5hashgenerator.com) avulla luoda jostain sanasta tiivisteen, jonka oletin löytyvän rockyou.txt sanalistasta.
 
+<img width="821" alt="Screenshot_5" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/e183e8b4-dd16-4606-9068-6b3a8bec7130">
 
+Sitten ajoin saman komennon, mutta tällä kertaa eri tiivisteellä: </br>
+`$ hashcat -m 0 '6fd5ab146e72e4446bbb6aa069d6c81c' rockyou.txt -o ratkaisu`.
 
+<img width="1136" alt="Screenshot_6" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/8f951a29-8e47-456d-b2e0-dc9ee1f69351">
 
+Nyt tuloste vastasi oletustani, joten voin todeta, että hashcat ja hashid toimivat.
 
+---
 
-
+## b) Salainen, mutta ei multa. Ratkaise dirfuzt-1 artikkelista Karvinen 2023: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/)
 
 
 
@@ -184,6 +218,9 @@ https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h5-final-countdown 
 https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ </br>
 https://terokarvinen.com/2023/crack-file-password-with-john/ </br>
 https://www.stationx.net/nmap-cheat-sheet/ </br>
+https://onlinehashtools.com/generate-random-md5-hash </br>
+https://www.md5hashgenerator.com </br>
+
 
 
 
