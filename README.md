@@ -66,7 +66,7 @@ https://github.com/JRissanen/h1-OmaLabra
 * Tulosteen perusteella tiivisteen voisi murtaa komennolla: 
 * `$ hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`.
   * `-m 0` tulee aiemman hashid:n tulostuksesta MD5 kohdasta: `[+] MD5 [Hashcat Mode: 0]`.
-  * `-o solved` tallentaa hashcatin ratkaisun tyhjään tiedostoon nimeltä "solved".
+  * `-o solved` tallentaa hashcatin ratkaisun tyhjään tiedostoon nimeltä "solved". </br>
 (Karvinen, 2023).
 
 ---
@@ -93,7 +93,7 @@ https://github.com/JRissanen/h1-OmaLabra
   * Sitten vain Johnilla sanakirjahyökkäys tiivisteeseen.
    * Onnistuu komennolla: `$ $HOME/john/run/john esimerkki.zip.hash`.
   * Tuloste on pitkä, mutta oleellinen tieto (salasana) on aika alhaalla tulosteessa.
-   * Näyttää esimerkiksi: `butterfly        (esimrkki.zip/secretFiles/SECRET.md)`.
+   * Näyttää esimerkiksi: `butterfly        (esimrkki.zip/secretFiles/SECRET.md)`. </br>
 (Karvinen, 2023).
 
 ---
@@ -112,7 +112,7 @@ https://github.com/JRissanen/h1-OmaLabra
 * Fuff toimii esimerkiksi komennolla:
  * `$ ./ffuf -w common.txt -u http://<esimerkki.com>/FUZZ`.
   * `-w` määrittää sanalistan/sanakirjan.
-  * `-u` määrittää url-osoitteen.
+  * `-u` määrittää url-osoitteen. </br>
 (Karvinen, 2023).
 
 ---
