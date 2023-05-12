@@ -44,7 +44,7 @@ https://github.com/JRissanen/h1-OmaLabra
 
 * Järjestelmät eivät tallenna salasanoja, vaan tiivisteitä (hash).
   * Esim. `f2477a144dff4f216ab81f2ac3e3207d`.
-* Tiivistettyä salasanaa ei saa enää käännettyä takaisin "normaaliksi" salasanaksi
+* Tiivistettyä salasanaa ei saa enää käännettyä takaisin "normaaliksi" salasanaksi.
 
 * Salasanojen murtaminen onnistuu "Hashcat" ja "Hashid" -ohjelmilla.
 * Asenna lisäksi jokin iso sanakirja täynnä salasanoja.
@@ -61,6 +61,22 @@ https://github.com/JRissanen/h1-OmaLabra
     ...
     ```
   * Usein oikea tiivistetyppi on hashid:n antamien kolmen ensimmäisen vaihtoehdon joukossa.
+
+* MD5 on yleisempi kuin MD2 ja MD4.
+* Tulosteen perusteella tiivisteen voisi murtaa komennolla: 
+* `$ hashcat -m 0 '6b1628b016dff46e6fa35684be6acc96' rockyou.txt -o solved`.
+  * `-m 0` tulee aiemman hashid:n tulostuksesta MD5 kohdasta: `[+] MD5 [Hashcat Mode: 0]`.
+  * `-o solved` tallentaa hashcatin ratkaisun tyhjään tiedostoon nimeltä "solved".
+(Karvinen, 2023).
+
+---
+
+### Karvinen 2023: [Crack File Password With John](https://terokarvinen.com/2023/crack-file-password-with-john/)
+
+* John The Ripper on sanakirjahyökkäystä hyödyntävä ohjelma, jonka avulla voi murtaa salasanoja.
+  * Toiminnan kannalta oleellisia työkaluja:
+   * <img width="310" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/f94e09e2-11c4-47bb-80f5-2a42f02fbb88"> (Karvinen, 2023).
+
 
 
 
@@ -97,8 +113,8 @@ https://github.com/JRissanen/h1-OmaLabra
 
 ## Lähteet
 https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h5-final-countdown </br>
-https://terokarvinen.com/2022/cracking-passwords-with-hashcat/
-
+https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ </br>
+https://terokarvinen.com/2023/crack-file-password-with-john/ </br>
 
 
 
