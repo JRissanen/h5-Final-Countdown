@@ -200,6 +200,23 @@ Nyt tuloste vastasi oletustani, joten voin todeta, että hashcat ja hashid toimi
 
 Seurasin tässä tehtävässä Tero Karvisen artikkelia: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/).
 
+Aloitin luomalla uuden hakemsiton tehtävää varten ja siirryin sinne. </br>
+```
+$ mkdir dirfuzt_1
+$ cd dirfuzt_1
+```
+
+Sitten latasin `wget` työkalun avulla "dirfuzt-1" -tiedoston Teron sivuilta. </br>
+`$ wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1`.
+
+Muutin oikeuksia komennolla: `chmod u+x dirfuzt-1`. </br>
+Sitten katsoin osoitteen: `./dirfuzt-1`. </br>
+Se oli: 127.0.0.2:8000
+
+<img width="1420" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/41d568f8-a2c5-4c1a-ba67-de6670afeda1">
+
+
+
 
 
 
