@@ -74,8 +74,8 @@ https://github.com/JRissanen/h1-OmaLabra
 ### Karvinen 2023: [Crack File Password With John](https://terokarvinen.com/2023/crack-file-password-with-john/)
 
 * John The Ripper on sanakirjahyökkäystä hyödyntävä ohjelma, jonka avulla voi murtaa salasanoja.
-  * Toiminnan kannalta oleellisia työkaluja:
-   * <img width="310" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/f94e09e2-11c4-47bb-80f5-2a42f02fbb88"> (Karvinen, 2023).
+  * Toiminnan kannalta oleellisia työkaluja: </br>
+    <img width="310" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/f94e09e2-11c4-47bb-80f5-2a42f02fbb88"> (Karvinen, 2023).
 
 * John The Ripper, Jumbo version lataaminen onnnistuu komennolla:
   * `$ git clone --depth=1 https://github.com/openwall/john.git`.
@@ -87,7 +87,63 @@ https://github.com/JRissanen/h1-OmaLabra
     ```
   * `$ make -s clean && make -sj4`
 
-* 
+* ZIP-tiedostojen murtaminen John The Ripperillä on kaksiosainen prosessi.
+  * Ensin pitää purkaa ZIP-tiedosto tiivisteeksi.
+   * Onnistuu komennolla: `$ $HOME/john/run/zip2john esimerkki.zip >esimerkki.zip.hash`.
+  * Sitten vain Johnilla sanakirjahyökkäys tiivisteeseen.
+   * Onnistuu komennolla: `$ $HOME/john/run/john esimerkki.zip.hash`.
+  * Tuloste on pitkä, mutta oleellinen tieto (salasana) on aika alhaalla tulosteessa.
+   * Näyttää esimerkiksi: `butterfly        (esimrkki.zip/secretFiles/SECRET.md)`.
+(Karvinen, 2023).
+
+---
+
+### Karvinen 2023: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/)
+
+* Fuff on joohoi:n kehittämä "web fuzzer" -työkalu, joka mahdollistaa salaisten hakemistojen löytämisen.
+
+* Fuff vaatii sanakirjan toimiakseen.
+ * Esim Daniel Miesslerin sanakirjan voi ladata:
+  * `$ wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`.
+
+* Fuff on todella nopea.
+* Kaikki parametrit voi nähdä: `$ ./fuff`.
+
+* Fuff toimii esimerkiksi komennolla:
+ * `$ ./ffuf -w common.txt -u http://<esimerkki.com>/FUZZ`.
+  * `-w` määrittää sanalistan/sanakirjan.
+  * `-u` määrittää url-osoitteen.
+(Karvinen, 2023).
+
+---
+
+## y) The SUPER ultimate Hakk3r Che33tsheet 0.0.1. Tee tiivistelmä omista ja kavereiden parhaista tunketumistekniikoista. Ole täsmällinen, liitä komennot mukaan. Tämän kohdan vastaus lienee pidempi kuin aiempien x-tehtävien. Viittaa lähteisiin. Tässä alakohdassa ei tarvitse ajaa komentoja tietokoneella.
+
+* Turvallinen ympäristö
+ * Tunketumista pitää aina harrastaa turvallisessa ympäristössä, siihen opin tekemään oman ympäristön [Tero Karvisen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h1-omalabra) tunkeutumistestaus kurssin ensimmäisellä oppitunnilla.
+ * Oman ympäristöni näkee [täältä](https://github.com/JRissanen/h1-OmaLabra).
+
+* Metasploitable, [Tero Karvinen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/)
+ * Täynnä hyviä exploitteja ja loistava lähtökohta tunkeutumistestaukseen.
+ * Käynnistyy komennolla: `msfdb run`.
+ * Uuden työtilan saa tehtyä komennolla: `workspace --add <haluamasi nimi>.`
+ * Komennolla: `search` löytää exploitteja.
+ * Komennolla: `use` voi ajaa exploitteja.
+ * Komennolla `options` näkee exploitin vaatimukset.
+
+* Nmap, [Tero Karvinen](https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/) sekä [StationX](https://www.stationx.net/nmap-cheat-sheet/)
+ * Yleisin porttiskannaus työkalu.
+ * Toimii komennolla: `sudo nmap <kohde ip-osoite>`.
+ * Hyödyllisiä parametreja:
+  * `-A` "aggressiivinen" skannaus (käyttöjärjestelmä, versio, skripiti skannaus ja traceroute)
+  * `-sV` yrittää tunnistaa porttia käyttävän palvelun version
+  * `-sC` skannaa oletus scripteillä (oletus NSE=Nmap Scipting Engine documentation). 
+  * `-p` tietyn portin skannaus.
+  * `-o <tiedoston nimi>` tallentaa skannauksen tuloksen haluttuun tiedostoon, aktiiviseen hakemistoon.
+
+---
+
+## a) Asenna Hashcat ja testaa sen toiminta murtamalla esimerkkisalasana.
 
 
 
@@ -127,6 +183,7 @@ https://github.com/JRissanen/h1-OmaLabra
 https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h5-final-countdown </br>
 https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ </br>
 https://terokarvinen.com/2023/crack-file-password-with-john/ </br>
+https://www.stationx.net/nmap-cheat-sheet/ </br>
 
 
 
