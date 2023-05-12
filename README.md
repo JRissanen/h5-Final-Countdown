@@ -77,6 +77,18 @@ https://github.com/JRissanen/h1-OmaLabra
   * Toiminnan kannalta oleellisia työkaluja:
    * <img width="310" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/f94e09e2-11c4-47bb-80f5-2a42f02fbb88"> (Karvinen, 2023).
 
+* John The Ripper, Jumbo version lataaminen onnnistuu komennolla:
+  * `$ git clone --depth=1 https://github.com/openwall/john.git`.
+   * `--depth=1` -parametri säästää latausaikaa kopioimalla vain viimeisimmät versiot tiedostoista.
+* Konfigurointi ja kasaaminen (compile) onnistuu komennoilla:
+  * ```
+    $ cd john/src/	
+    $ ./configure
+    ```
+  * `$ make -s clean && make -sj4`
+
+* 
+
 
 
 
