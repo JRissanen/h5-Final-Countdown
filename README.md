@@ -201,8 +201,8 @@ Nyt tuloste vastasi oletustani, joten voin todeta, että hashcat ja hashid toimi
 Seurasin tässä tehtävässä Tero Karvisen artikkelia: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/).
 
 Aloitin luomalla uuden hakemsiton tehtävää varten ja siirryin sinne. </br>
-`$ mkdir dirfuzt_1`
-`$ cd dirfuzt_1`
+`$ mkdir dirfuzt_1`.
+`$ cd dirfuzt_1`.
 
 Sitten latasin `wget` työkalun avulla "dirfuzt-1" -tiedoston Teron sivuilta. </br>
 `$ wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1`.
@@ -218,7 +218,7 @@ Purin tiedoston: </br>
 `$ tar -xf ffuf_2.0.0_linux_amd64.tar.gz`.
 
 Seuraavaksi latasin Daniel Miesslerin [hakemistolsitan](https://github.com/danielmiessler/SecLists): </br>
-`wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`
+`wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`.
 
 Teron artikkelia seuratessa oli selvää, että jos käyttäisin yleisintä hakemistojen etsimis tapaa ffufilla: </br>
 `$ ./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ`, niin tuloste olisi todella pitkä ja sisältäisi todella paljon turhaa infoa. </br>
@@ -244,6 +244,54 @@ Vastauksiksi sain: wp-admin = peruna ja .git = raindrop.
 ---
 
 ### c) Asenna John the Ripper ja testaa sen toiminta murtamalla jonkin esimerkkitiedoston salasana.
+
+Seurasin tässä tehtävässä Tero Karvisen artikkelia: [Crack File Password With John](https://terokarvinen.com/2023/crack-file-password-with-john/).
+
+Aloitin tekemällä tehtävälle oman hakemiston, siirtymällä sinne ja lataamalla vaaditut työkalut/ohjelmat: </br>
+`$ mkdir john_the_ripper`. </br>
+`$ cd john_the_ripper`. </br>
+`$ sudo apt-get -y install micro bash-completion git build-essential libssl-dev zlib1g zlib1g-dev zlib-gst libbz2-1.0 libbz2-dev atool zip wget`.
+
+Seuraavaksi latasin Jumbo version John The Ripperistä, koska se tukee useita tiedostotyyppejä: </br>
+`$ git clone --depth=1 https://github.com/openwall/john.git`.
+ * `--depth=1` -parametri säästää latausaikaa kopioimalla vain viimeisimmät versiot tiedostoista.
+
+Seuraavaksi siirryin "john/src" hakemistoon, jonka juuri latasin: `$ cd john/src/	`. </br>
+Ja ajoin konfiguraation: `$ ./configure`.
+
+<img width="813" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/f5da8129-2735-42f1-a326-7b6c105ee069">
+
+Seuraavaksi konfiguraation jälkeen john ehdottaa kasaamista komennolla: </br>
+`$ make -s clean && make -sj4`, joten tein sen.
+
+Kasaamisprosessi kesti hetken, mutta onnistui lopulta. </br>
+Sitten käynnistin ohjelman komennolla: `$ ./run/john`.
+
+<img width="1057" alt="Screenshot_2" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/38815085-ad7b-4d4d-a703-f7483bd66b04">
+
+Seuraavaksi tein "/john" hakemistoon Zip-tiedoston nimeltä "break_this" ja salasin sen salasanalla: "Christina".
+
+<img width="1072" alt="Screenshot_4" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/633dcb69-b211-4a28-9be0-67ff66aba53e">
+
+Sitten oli enää jäljellä kyseisen tiedoston purkaminen. </br>
+Ensin tiedostosta piti tehdä tiiviste komennolla: `$ ./run/zip2john break_this.zip >break_this.zip.hash`. </br>
+Ja lopuksi tiivisteen murtaminen komennolla: `$ ./run/john break_this.zip.hash`.
+
+<img width="1039" alt="Screenshot_5" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/abc792bb-6180-476d-863e-812c5ba30b7e">
+
+---
+
+## d) Jurpon sivut. Ohhoh, sieppasit juuri Jurpon Windowsista NTLM-tiivisteen 83f1cf89225005caeb4e52c9ea9b00e0 . Liitteenä Jurpon kotisivulta leikattu ja liimattu teksti. Tee oma hyökkäyssanakirja ja murra tiiviste myöhempää liikkumista (lateral movement) varten.
+
+
+
+
+
+
+
+
+
+
 
 
 
