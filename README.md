@@ -235,8 +235,8 @@ Molemmilta sivuilta löytyi Teron jättämä lippu ja siitä tiiviste.
 <img width="1447" alt="Screenshot_4" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/2ad33eb6-0292-4c9f-ad64-d8c0ce18f290">
 
 Kopioin liput talteen ja mursin ne Hashcatin avulla. </br>
-`hashcat -m 0 3364c855a2ac87341fc7bcbda955b580 rockyou.txt -o wp-admin`. </br>
-`hashcat -m 0 3cc87212bcd411686a3b9e547d47fc51 rockyou.txt -o git`. </br>
+`hashcat -m 0 '3364c855a2ac87341fc7bcbda955b580' rockyou.txt -o wp-admin`. </br>
+`hashcat -m 0 '3cc87212bcd411686a3b9e547d47fc51' rockyou.txt -o git`. </br>
 Vastauksiksi sain: wp-admin = peruna ja .git = raindrop.
 
 <img width="1208" alt="Screenshot_5" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/35d4e3a9-001a-4c4f-8c03-398f33292151">
@@ -283,17 +283,34 @@ Ja lopuksi tiivisteen murtaminen komennolla: `$ ./run/john break_this.zip.hash`.
 
 ## d) Jurpon sivut. Ohhoh, sieppasit juuri Jurpon Windowsista NTLM-tiivisteen 83f1cf89225005caeb4e52c9ea9b00e0 . Liitteenä Jurpon kotisivulta leikattu ja liimattu teksti. Tee oma hyökkäyssanakirja ja murra tiiviste myöhempää liikkumista (lateral movement) varten.
 
->
 > Jurpon kotisivu
 >
-> MasterLazerMan on suosikkisankarini.
-> Olen aika komea, koska harrastan thriatlonin lisäksi Foo Man Zhu -perinnepainia.
-> Olen kotoisin Kouvolasta, jonka arkkitehtuuri saa sydämmeni sykkiimään vikkelämmin. 
+> MasterLazerMan on suosikkisankarini. </br>
+> Olen aika komea, koska harrastan thriatlonin lisäksi Foo Man Zhu -perinnepainia. </br>
+> Olen kotoisin Kouvolasta, jonka arkkitehtuuri saa sydämmeni sykkiimään vikkelämmin. </br>
 >
 > Nähdään IRCissä, sähköpostissa tai DeepThinked-piilopalvelussa TORissa. 
->
 
-Aloitin tekemällä Jurpon kotisvulla näkyvistä sanoista sanalistan, johon sitten myöhemmin aion verrata NTML-tiivistettä.
+Aloitin tekemällä tehtävälle oman hakemiston ja siirtymällä sinne: </br>
+`mkdir jurppo` </br>
+`cd jurppo`
+
+Sitten tein sanalistan mielestäni olennaisista sanoista, jotka jurpon kotisivulla näkyy: </br>
+
+<img width="610" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/b0d427d8-bc7e-44a1-9208-7814687d09f2">
+
+Sitten mursin tiivisteen Hashcatin ja Hashid:n avulla: </br>
+Selvitin ensin, että mikä Mode kuuluu NTLM-tiivisteille: `hashid -m 83f1cf89225005caeb4e52c9ea9b00e0`. </br>
+Tulosteesta näin: `[+] NTLM [Hashcat Mode: 1000]`.
+
+Sitten Hashcatilla: `hashcat -m 1000 '83f1cf89225005caeb4e52c9ea9b00e0' jks_sanalista.txt -o tiiviste_ratkaisu`. </br>
+Onnistuin murtamaan tiivisteen ja sitä vastaava sana oli: MasterLazerMan.
+
+<img width="897" alt="Screenshot_2" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/41eb8508-e206-4d68-83a4-e7fee2fa9eb7">
+
+---
+
+## e) Valitse 2: Ratkaise kaksi itse valitsemaasi tehtävää [PortSwigger labs](https://portswigger.net/web-security/all-labs) -sivulta. Tietysti sellaisia, jotka eivät ole olleet vielä läksynä.
 
 
 
@@ -330,6 +347,7 @@ https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Database
 https://onlinehashtools.com/generate-random-md5-hash </br>
 https://www.md5hashgenerator.com </br>
 https://github.com/danielmiessler/SecLists </br>
+https://portswigger.net/web-security/all-labs </br>
 
 
 
