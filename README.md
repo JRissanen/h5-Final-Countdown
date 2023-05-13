@@ -314,6 +314,7 @@ Onnistuin murtamaan tiivisteen ja sitä vastaava sana oli: MasterLazerMan.
 
 ### 1. Labra: [Reflected XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded)
 
+Ajattelin, että tämä olisi hyvä simppeli labra, niin tulisi kerrattua XSS. </br>
 Aloitin lukemalla labran ohjeistuksen.
 
 <img width="769" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/fec8d37f-cee8-4c60-a7a3-2c482e359963">
@@ -342,35 +343,50 @@ Ja tuolla syötteellä labra meni läpi.
 
 ---
 
-### 2. Labra
+### 2. Labra: [File path traversal, simple case](https://portswigger.net/web-security/file-path-traversal/lab-simple)
 
+Hakemistopolun ylittämishyökkäys (directory traversal) vaikutti mielenkiintoiselta, joten valitsin tämän labran. </br>
+Aloitin lukemalla vähän infoa aiheesta PortSwiggerin artikkelista: [Directory traversal](https://portswigger.net/web-security/file-path-traversal). </br>
+Siellä kerrottiin kattavasti aiheesta:
 
+<img width="766" alt="Screenshot_2" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/2d37aee7-39f1-4f9c-9afb-2e5df623f185">
 
+Esimerkiksi verkkokaupan sivut, joilla näkyy kuvia tuotteista, lataa kuvat sivulle hakemistosta `/var/www/images/`. </br>
+Hakukentässä se näyttäisi esim: `<img src="/loadImage?filename=218.png">`. </br>
+Mikäli sovellusta ei ole ohjelmoitu hakemistopolun ylittämishyökkäyksiä vastaan, hyökkääjä voisi esimerkiksi syöttää `filename=` kohtaan `../../../etc/passwd`, jolloin sovellus ei lukisikaan tiedostoja `/var/www/images/` hakemistosta, vaan `/etc/passwd`, koska `../` on oikea komento, jonka avulla pääsee yhden tason ylöspäin hakemistorakenteessa.
 
+Seuraavakasi aloin tekemään labraa ja aloitin lukemalla labran ohjeistuksen.
 
+<img width="769" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/e736b48f-b2bc-442e-9524-599a18ca72e5">
 
+Labran ratkaisu vaatii `/etc/passwd` tiedoston sisällön hakemista. </br>
+Labran haavoittuvuus on tuotteiden kuvakkeiden infoissa. </br>
+Labran avattua, ensimmäinen näkymä oli tyypillinen verkkokaupan etusivu.
 
+<img width="854" alt="Screenshot_3" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/da5e50f5-7d7f-4b4a-a0ae-a30d116c6b24">
 
+Ensimmäiseksi klikkasin tuotetta nimeltä "Picture Box". </br>
+Sitten kokeilin hiiren oikealla painikkeella kuvaketta ja "Open image in new tab".
 
+<img width="1198" alt="Screenshot_4" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/59ee5d2c-2f5e-434a-8c30-1b159407dbff">
 
+<img width="1041" alt="Screenshot_5" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/7a0e71cf-4a71-493f-bd1f-b8164389ded0">
 
+Kuva aukesin ja nyt hakukentän teksti näytti samalta kuin artikkelin esimerkissä. </br>
+Päätin koittaa artikkelin tapaa, eli syötin `filename` kohtaan: `filename=../../../etc/passwd`.
 
+<img width="1317" alt="Screenshot_6" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/66a0547c-1dc2-4dfd-a3d4-b015c144eeb0">
 
+Siitä tuli virheilmoitus ja kun suljin tabin, niin labra oli mennyt läpi, eli syötteeni oli oikea.
 
-
-
-
-
-
-
-
-
+<img width="1242" alt="Screenshot_7" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/62292d37-8512-4c3c-aed7-3798f3552f39">
 
 
 
 
 
 ## Lähteet
+
 https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h5-final-countdown </br>
 https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ </br>
 https://terokarvinen.com/2023/crack-file-password-with-john/ </br>
@@ -380,10 +396,8 @@ https://onlinehashtools.com/generate-random-md5-hash </br>
 https://www.md5hashgenerator.com </br>
 https://github.com/danielmiessler/SecLists </br>
 https://portswigger.net/web-security/all-labs </br>
+https://portswigger.net/web-security/cross-site-scripting </br>
 https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded </br>
-
-
-
-
-
+https://portswigger.net/web-security/file-path-traversal/lab-simple </br>
+https://portswigger.net/web-security/file-path-traversal </br>
 
