@@ -159,7 +159,7 @@ $ mkdir hash_hash
 $ cd hash_hash
 ```
 
-Sitten latasin `wget` työkalun avulla "Rockyou" -nimisen sanakirjan. </br>
+Sitten latasin `wget` työkalun avulla Daniel Miesslerin ["Rockyou"](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases) -nimisen sanakirjan. </br>
 `$ wget https://github.com/danielmiessler/SecLists/raw/master/Passwords/Leaked-Databases/rockyou.txt.tar.gz`. </br>
 Purin kompressoidun tiedoston komennolla: `$ tar xf rockyou.txt.tar.gz`. </br>
 Ja lopuksi poistin purkamisen jälkeen turhaksi jääneen tiedoston komennolla: `$ rm rockyou.txt.tar.gz`.
@@ -201,20 +201,49 @@ Nyt tuloste vastasi oletustani, joten voin todeta, että hashcat ja hashid toimi
 Seurasin tässä tehtävässä Tero Karvisen artikkelia: [Find Hidden Web Directories - Fuzz URLs with ffuf](https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/).
 
 Aloitin luomalla uuden hakemsiton tehtävää varten ja siirryin sinne. </br>
-```
-$ mkdir dirfuzt_1
-$ cd dirfuzt_1
-```
+`$ mkdir dirfuzt_1`
+`$ cd dirfuzt_1`
 
 Sitten latasin `wget` työkalun avulla "dirfuzt-1" -tiedoston Teron sivuilta. </br>
 `$ wget https://terokarvinen.com/2023/fuzz-urls-find-hidden-directories/dirfuzt-1`.
 
 Muutin oikeuksia komennolla: `chmod u+x dirfuzt-1`. </br>
-Sitten katsoin osoitteen: `./dirfuzt-1`. </br>
-Se oli: 127.0.0.2:8000
+Sitten käynnistin verkkosivun: `./dirfuzt-1`. </br>
 
 <img width="1420" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/41d568f8-a2c5-4c1a-ba67-de6670afeda1">
 
+Sitten latasin ffufin: </br>
+`$ wget https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_amd64.tar.gz`. </br>
+Purin tiedoston: </br> 
+`$ tar -xf ffuf_2.0.0_linux_amd64.tar.gz`.
+
+Seuraavaksi latasin Daniel Miesslerin [hakemistolsitan](https://github.com/danielmiessler/SecLists): </br>
+`wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt`
+
+Teron artikkelia seuratessa oli selvää, että jos käyttäisin yleisintä hakemistojen etsimis tapaa ffufilla: </br>
+`$ ./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ`, niin tuloste olisi todella pitkä ja sisältäisi todella paljon turhaa infoa. </br>
+Sen sijaan käytin artikkelissakin neuvottua `-fs` parametria, jonka avulla pystyy suodattamaan tulosetta HTTP vastauksen koon mukaan. </br>
+Suurin osa turhista HTTP vastauksista olivat 154 tavua kooltaan, joten suodatin sen mukaan: </br>
+`./ffuf -w common.txt -u http://127.0.0.2:8000/FUZZ -fs 154`.
+
+<img width="938" alt="Screenshot_3" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/1a7d2bc5-5cbb-4bd4-b082-88326efedfbd">
+
+Näin löytyi ainakin "wp-admin" sekä muutama eri ".git" sivu. </br>
+Kokeilin "wp-admin" käyttäjää sekä ensimmäistä ".git" sivua ja ne olivat oikeat. </br>
+Molemmilta sivuilta löytyi Teron jättämä lippu ja siitä tiiviste.
+
+<img width="1447" alt="Screenshot_4" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/2ad33eb6-0292-4c9f-ad64-d8c0ce18f290">
+
+Kopioin liput talteen ja mursin ne Hashcatin avulla. </br>
+`hashcat -m 0 3364c855a2ac87341fc7bcbda955b580 rockyou.txt -o wp-admin`. </br>
+`hashcat -m 0 3cc87212bcd411686a3b9e547d47fc51 rockyou.txt -o git`. </br>
+Vastauksiksi sain: wp-admin = peruna ja .git = raindrop.
+
+<img width="1208" alt="Screenshot_5" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/35d4e3a9-001a-4c4f-8c03-398f33292151">
+
+---
+
+### c) Asenna John the Ripper ja testaa sen toiminta murtamalla jonkin esimerkkitiedoston salasana.
 
 
 
@@ -239,8 +268,11 @@ https://terokarvinen.com/2023/tunkeutumistestaus-2023-kevat/#h5-final-countdown 
 https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ </br>
 https://terokarvinen.com/2023/crack-file-password-with-john/ </br>
 https://www.stationx.net/nmap-cheat-sheet/ </br>
+https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases </br>
 https://onlinehashtools.com/generate-random-md5-hash </br>
 https://www.md5hashgenerator.com </br>
+https://github.com/danielmiessler/SecLists </br>
+
 
 
 
