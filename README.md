@@ -283,7 +283,17 @@ Ja lopuksi tiivisteen murtaminen komennolla: `$ ./run/john break_this.zip.hash`.
 
 ## d) Jurpon sivut. Ohhoh, sieppasit juuri Jurpon Windowsista NTLM-tiivisteen 83f1cf89225005caeb4e52c9ea9b00e0 . Liitteenä Jurpon kotisivulta leikattu ja liimattu teksti. Tee oma hyökkäyssanakirja ja murra tiiviste myöhempää liikkumista (lateral movement) varten.
 
+>
+> Jurpon kotisivu
+>
+> MasterLazerMan on suosikkisankarini.
+> Olen aika komea, koska harrastan thriatlonin lisäksi Foo Man Zhu -perinnepainia.
+> Olen kotoisin Kouvolasta, jonka arkkitehtuuri saa sydämmeni sykkiimään vikkelämmin. 
+>
+> Nähdään IRCissä, sähköpostissa tai DeepThinked-piilopalvelussa TORissa. 
+>
 
+Aloitin tekemällä Jurpon kotisvulla näkyvistä sanoista sanalistan, johon sitten myöhemmin aion verrata NTML-tiivistettä.
 
 
 
