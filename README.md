@@ -312,6 +312,38 @@ Onnistuin murtamaan tiivisteen ja sitä vastaava sana oli: MasterLazerMan.
 
 ## e) Valitse 2: Ratkaise kaksi itse valitsemaasi tehtävää [PortSwigger labs](https://portswigger.net/web-security/all-labs) -sivulta. Tietysti sellaisia, jotka eivät ole olleet vielä läksynä.
 
+### 1. Labra: [Reflected XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded)
+
+Aloitin lukemalla labran ohjeistuksen.
+
+<img width="769" alt="Screenshot_1" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/fec8d37f-cee8-4c60-a7a3-2c482e359963">
+
+Labran ratkaisu vaatii cross-site scripting hyökkäyksen, jonka seurauksena sivu kutsuu "alert" funktiota. </br>
+Labran haavoittuvuus on haku-funktiossa. </br>
+Käynnistin labran ja se aukaisi tyypillisen näköisen Blogi-sivuston.
+
+<img width="770" alt="Screenshot_2" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/8ab186ae-3de3-4e6e-817a-6eb5593ebaad">
+
+Koska labran ohjeistuksessa kerrottiin, että haavoittuvuus on haku-funktiossa, niin ajattelin ensimmäiseksi koittaa hyökätä hakukenttään. </br>
+Kertaamalla asioita PortSwiggerin [Cross-site scripting](https://portswigger.net/web-security/cross-site-scripting) artikkelista muistin, että XSS haavoittuvuuksia voi testata esimerkiksi JavaScript funktioilla. </br>
+Perus kaava XSS hyökkäyksissä on: `<script>XSS</script>`. </br>
+Kokeilin siis Blogi-sivuston hakukenttään: `<script>alert()</script>`.
+
+<img width="904" alt="Screenshot_3" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/aead56f3-c4d0-4c59-ac3d-4633534c52cd">
+
+Sain sivun kutsumaan `alert()` funktiota onnistuneesti, mutta labra ei mennyt läpi.
+
+<img width="701" alt="Screenshot_4" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/0a818d7e-7d87-4442-933f-95c239363e15">
+
+Ajattelin, että ehkä labra haluaa tekstin "alert" `alert()` funktiosta, joten kokeilin: `<script>alert(alert)</script>` </br>
+Ja tuolla syötteellä labra meni läpi.
+
+<img width="1055" alt="Screenshot_5" src="https://github.com/JRissanen/h5-Final-Countdown/assets/116954333/bb798dad-46e0-41fc-8881-914d88361d5e">
+
+---
+
+### 2. Labra
+
 
 
 
@@ -348,6 +380,8 @@ https://onlinehashtools.com/generate-random-md5-hash </br>
 https://www.md5hashgenerator.com </br>
 https://github.com/danielmiessler/SecLists </br>
 https://portswigger.net/web-security/all-labs </br>
+https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded </br>
+
 
 
 
